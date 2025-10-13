@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>U9</title>
+
+  <link rel="stylesheet" href="Home/home.css">
+  <link rel="stylesheet" href="About/about.css">
+  <link rel="stylesheet" href="Order/order.css">
+  <link rel="stylesheet" href="Message/message.css">
+  <link rel="stylesheet" href="Me/me.css">
+  <link rel="stylesheet" href="Button/button.css">
+  <link rel="stylesheet" href="common/alert.css">
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="../supabaseClient.js"></script>
+</head>
+<body>
+  
+  <div id="homePage" class="page active">
+    <div class="ad-container">
+      <img id="adImage" src="" alt="Advertise" />
+    </div>
+
+    <div class="marquee-container">
+      <span class="marquee-icon">🔈</span>
+      <div class="marquee-wrapper">
+        <span class="marquee-text">Welcome to my platform, congratulations on posting!</span>
+      </div>
+    </div>
+
+    <div class="ad-category-container">
+      <div class="category-ad-grid">
+        <div class="ad-item" data-category="phone"></div>
+        <div class="ad-item" data-category="phone"></div>
+        <div class="ad-item" data-category="phone"></div>
+        <div class="ad-item" data-category="phone"></div>
+
+        <div class="ad-item" data-category="clothes"></div>
+        <div class="ad-item" data-category="clothes"></div>
+        <div class="ad-item" data-category="clothes"></div>
+        <div class="ad-item" data-category="clothes"></div>
+
+        <div class="ad-item" data-category="car"></div>
+        <div class="ad-item" data-category="car"></div>
+        <div class="ad-item" data-category="car"></div>
+        <div class="ad-item" data-category="car"></div>
+
+        <div class="ad-item" data-category="cosmetics"></div>
+        <div class="ad-item" data-category="cosmetics"></div>
+        <div class="ad-item" data-category="cosmetics"></div>
+        <div class="ad-item" data-category="cosmetics"></div>
+
+        <div class="ad-item" data-category="diamond"></div>
+        <div class="ad-item" data-category="diamond"></div>
+        <div class="ad-item" data-category="diamond"></div>
+        <div class="ad-item" data-category="diamond"></div>
+      </div>
+
+      <div class="category-buttons">
+        <button class="category-btn active" data-category="phone">Phones</button>
+        <button class="category-btn" data-category="clothes">Clothing</button>
+        <button class="category-btn" data-category="car">Car</button>
+        <button class="category-btn" data-category="cosmetics">Cosmetic</button>
+        <button class="category-btn" data-category="diamond">Backpack</button>
+      </div>
+    </div>
+
+    <div class="rank-section">
+      <h3>🏆 Ranking list</h3>
+      <ul class="rank-list">
+        <li><span class="rank-num">1</span> iPhone 15 Pro Max <strong>销量 12%</strong></li>
+        <li><span class="rank-num">2</span> 钻石项链 <strong>销量 9%</strong></li>
+        <li><span class="rank-num">3</span> 豪华轿车 <strong>销量 7%</strong></li>
+        <li><span class="rank-num">4</span> 名牌手袋 <strong>销量 5%</strong></li>
+        <li><span class="rank-num">5</span> 口红套装 <strong>销量 3%</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="infoPage" class="page">
+    <div id="openChatBtn" class="support-box">
+      <img src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/123.jpg" alt="U9">
+      <span>Customer Service</span>
+      <span class="unread-dot">0</span>
+    </div>
+
+    <div class="telegram-box">
+      <img src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/123.jpg" alt="Telegram">
+      <div class="telegram-info">
+        <p id="telegramAccount">@U9_support</p>
+        <button id="copyTelegramBtn">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="chatWindow" class="chat-window hidden">
+    <div class="chat-header">
+      <button id="backBtn">⬅ Back</button>
+    </div>
+    <div id="chatMessages" class="chat-messages"></div>
+    <div class="chat-input">
+      <textarea id="chatInput" placeholder="enter..."></textarea>
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>
+
+  <div id="orderPage" class="page">
+    <div class="order-header">
+      <div class="coins-box">
+        Coins: <span id="ordercoins">0</span>
+        <button id="addCoinsBtn" title="Exchange your balance for Coins">+</button>
+      </div>
+    </div>
+
+    <div class="imgorder">
+      <img src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/12314.png" alt="U9">
+    </div>
+
+    <div class="order-actions">
+      <div class="left-side">
+        <img id="fixedImg" src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Home%20Photos/331.png" alt="U9" class="fixed-img">
+        <img id="matchingGif" src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/Qbox.gif" alt="Ordering..." style="width:150px; height:150px; display:none; margin-top:10px;">
+      </div>
+      <div class="right-side">
+        <button id="autoOrderBtn">Order</button>
+      </div>
+    </div>
+
+    <div class="order-roundandcoldown">
+      <div id="roundProgress"></div>
+      <p id="cooldownDisplay"></p>
+    </div>
+
+    <div id="orderResult" class="order-result"></div>
+
+    <div class="dulcontainer">
+      <div class="left-box">History</div>
+      <div class="right-box">ℹ️</div>
+    </div>
+
+    <div class="white-container">
+
+    </div>
+
+    <div id="historyModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button id="closeHistoryBtn">⬅ Back</button>
+          <h3>Order history</h3>
+        </div>
+        <div id="orderHistoryList" class="modal-body">
+          <ul>
+            <li>
+              <img src="https://dummyimage.com/40x40/ccc/fff.png&text=Photos" alt="Product photos">
+              <span>Product Name / $Price / Revenue / Status</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="rulesModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button id="closeRulesBtn">⬅ Back</button>
+          <h3>Rules of Use</h3>
+        </div>
+        <div class="modal-body">
+          <p>Write the rules here, support multiple lines of text, too much content will automatically scroll...</p>
+        </div>
+      </div>
+    </div>
+  
+    <div id="addCoinsModal" class="modal">
+      <div class="modal-content">
+        <h3>Exchange</h3>
+        <div class="exchange-toggle">
+          <button id="balanceToCoinsBtn" class="exchange-btn active" data-type="toCoins">Balance → Coins</button>
+          <button id="coinsToBalanceBtn" class="exchange-btn" data-type="toBalance">Coins → Balance</button>
+        </div>
+        <p>Please enter the amount to be exchanged</p>
+        <input type="number" id="addCoinsInput" min="1" placeholder="Amount" />
+        <div class="modal-actions">
+          <button id="cancelExchange">Cancel</button>
+          <button id="confirmExchange">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="msgPage" class="page">
+
+    <div class="about-top-banner">
+      <img src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/123.jpg" alt="U9">
+    </div>
+
+    <div class="about-container">
+
+      <div class="about-image">
+        <img src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/5551.jpg" alt="U9">
+      </div>
+
+      <div class="about-text">
+        <h2>About</h2>
+        <p>
+          We are a creative and passionate team focused on creating fun, practical and emotional product experiences.
+          Here, we believe that design is not only a visual art, but also a connection between emotion and inspiration.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="myPage" class="page">
+    <div class="user-info">
+      <img class="avatar" src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/123.jpg" alt="头像">
+      <div class="info-text">
+        <p class="username"><strong>Name：</strong><span id="username">loading...</span></p>
+        <p class="platform"><strong>Account：</strong><span id="platformAccount">loading...</span></p>
+      </div>
+    </div>
+
+    <div class="balance-box">
+      <p><strong>Balance：</strong><span id="balance">0.00</span></p>
+      <div class="balance-actions">
+        <button id="depositBtn">Deposit</button>
+        <button id="withdrawBtn">Withdraw</button>
+      </div>
+    </div>
+
+    <div class="my-buttons">
+      <button id="changeLoginPwdBtn">Password</button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+
+    <div id="changeLoginPwdModal" class="modal">
+      <div class="modal-content">
+        <h3>Change login password</h3>
+        <input type="password" id="currentLoginPwd" placeholder="Your password" />
+        <input type="password" id="newLoginPwd" placeholder="New password" />
+        <input type="password" id="confirmLoginPwd" placeholder="Confirm password" />
+        <div class="modal-actions">
+          <button id="cancelChangeLoginPwd">Cancel</button>
+          <button id="saveChangeLoginPwd">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <p>Are you sure you want to exit?</p>
+      <button id="cancelLogout">NO</button>
+      <button id="confirmLogout">YES</button>
+    </div>
+  </div>
+
+  <div id="withdrawModal" class="modal">
+    <div class="modal-content">
+      <h3>Withdraw</h3>
+      <p>Balance：<span id="withdrawBalance">0.00</span></p>
+      <input type="number" id="withdrawAmount" placeholder="Amount" />
+      <input type="text" id="walletAddress" placeholder="USDT-TRC20 wallet address" />
+      <button id="setPasswordBtn">Add withdrawal password</button>
+      <div class="modal-actions">
+        <button id="cancelWithdraw">Cancel</button>
+        <button id="confirmWithdraw">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="setPasswordModal" class="modal">
+    <div class="modal-content">
+      <h3>Set withdrawal password</h3>
+      <input type="password" id="withdrawPwd" maxlength="6" inputmode="numeric" placeholder="Enter a 6-digit password" />
+      <input type="password" id="confirmWithdrawPwd" maxlength="6" inputmode="numeric" placeholder="Confirm Password" />
+      <div class="modal-actions">
+        <button id="cancelSetPwd">Cancel</button>
+        <button id="saveWithdrawPwd">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="updatePasswordModal" class="modal">
+    <div class="modal-content">
+      <h3>Change withdrawal password</h3>
+      <input type="password" id="oldWithdrawPwd" maxlength="6" inputmode="numeric" placeholder="Enter password" />
+      <input type="password" id="newWithdrawPwd" maxlength="6" inputmode="numeric" placeholder="new password" />
+      <input type="password" id="confirmNewWithdrawPwd" maxlength="6" inputmode="numeric" placeholder="confirm password" />
+      <div class="modal-actions">
+        <button id="cancelUpdatePwd">Cancel</button>
+        <button id="saveUpdatePwd">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmPwdModal" class="modal">
+    <div class="modal-content">
+      <h3>Enter withdrawal password</h3>
+      <input type="password" id="inputWithdrawPwd" maxlength="6" inputmode="numeric" placeholder="Please enter password" />
+      <div class="modal-actions">
+        <button id="cancelConfirmPwd">Cancel</button>
+        <button id="submitWithdrawFinal">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="rechargeModal" class="modal">
+    <div class="modal-content">
+      <h3>Recharge</h3>
+
+      <label for="amountInput" class="wallet-label">USDT</label>
+      <input type="number" id="amountInput" placeholder="Amount" min="1" step="0.01" />
+
+      <div class="wallet-section">
+        <p class="wallet-label"><strong>USDT-TRC20 address</strong></p>
+        <p class="wallet-address-text">0xdAC17F958D2ee523a2206206994597C13D831ec7</p>
+        <div class="wallet-address">
+          <span id="walletAddress"></span>
+          <button id="copyAddressBtn" data-wallet="0xdAC17F958D2ee523a2206206994597C13D831ec7">Copy</button>
+        </div>
+        <img id="qrCode" src="https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/QR.png" alt="USDT Payment QR code" width="160" />
+      </div>
+
+      <div class="upload-section">
+        <label for="fileInput">Upload Transfer Photo</label>
+        <input type="file" id="fileInput" accept="image/*" />
+      </div>
+
+      <p id="status"></p>
+
+      <div class="modal-actions">
+        <button id="cancelRecharge">Cancel</button>
+        <button id="uploadBtn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <button data-page="homePage" class="active">Home</button>
+    <button data-page="infoPage" id="messageBtn">
+      Message
+      <span id="bottomUnreadCount" class="unread-dot">0</span>
+    </button>
+    <button data-page="orderPage">Order</button>
+    <button data-page="msgPage">About</button>
+    <button data-page="myPage">Me</button>
+  </div>
+
+  <script src="Home/home.js"></script>
+  <script src="Message/message.js"></script>
+  <script src="Order/order.js"></script>
+  <script src="About/about.js"></script>
+  <script src="Me/me.js"></script>
+  <script src="Button/button.js"></script>
+  <script src="common/alert.js"></script>
+  <script src="Recharge/recharge.js"></script>
+  
+</body>
+</html>
