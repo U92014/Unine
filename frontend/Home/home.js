@@ -97,10 +97,10 @@ const adItems = document.querySelectorAll(".ad-item");
 
 const adsData = {
   phone: [
-    "https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Home%20Photos/p1.avif",
-    "https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Home%20Photos/p1.jpg",
-    "https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Home%20Photos/p2.webp",
-    "https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Home%20Photos/c1.avif"
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/iPhone17ProMax.jpg",
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/iPhone15ProMax.jpg",
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/GooglePixel9.jpg",
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/GalaxyS25Ultra.jpg"
   ],
   clothes: [
     "https://via.placeholder.com/200x200?text=衣服1",
