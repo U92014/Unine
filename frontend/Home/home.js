@@ -103,10 +103,10 @@ const adsData = {
     "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/GalaxyS25Ultra.jpg"
   ],
   clothes: [
-    "https://via.placeholder.com/200x200?text=衣服1",
-    "https://via.placeholder.com/200x200?text=衣服2",
-    "https://via.placeholder.com/200x200?text=衣服3",
-    "https://via.placeholder.com/200x200?text=衣服4"
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/ZARA.jpg",
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/GUCCI.jpg",
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/Adidas.jpg",
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/ZARAHighWaist.jpg"
   ],
   car: [
     "https://via.placeholder.com/200x200?text=汽车1",
