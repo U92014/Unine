@@ -6,7 +6,7 @@ document.querySelectorAll(".toggle-password").forEach(btn => {
 
     if (input.type === "password") {
       input.type = "text";
-      btn.textContent = "🙈";
+      btn.textContent = "👁️";
     } else {
       input.type = "password";
       btn.textContent = "👁️";
