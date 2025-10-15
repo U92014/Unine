@@ -44,9 +44,9 @@ window.logout = async function () {
 };
 
 const adUrls = [
-  "https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/w1.jpg",
-  "https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/w2.png",
-  "https://airkbwolmkidaokqhxjj.supabase.co/storage/v1/object/public/Photos/w3.jpg"
+  "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/U9shop.jpg",
+  "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/U9shop.jpg",
+  "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/U9shop.jpg"
 ];
 
 let currentAdIndex = 0;
