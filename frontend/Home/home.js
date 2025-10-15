@@ -109,7 +109,7 @@ const adsData = {
     "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/ZARAHighWaist.jpg"
   ],
   car: [
-    "https://via.placeholder.com/200x200?text=汽车1",
+    "https://uiwttxqdoplttyrfqcbb.supabase.co/storage/v1/object/public/Photos/Phones/Swissgoldenwristwatch.jpg",
     "https://via.placeholder.com/200x200?text=汽车2",
     "https://via.placeholder.com/200x200?text=汽车3",
     "https://via.placeholder.com/200x200?text=汽车4"
